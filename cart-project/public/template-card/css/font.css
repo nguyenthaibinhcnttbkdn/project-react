@@ -1,0 +1,16 @@
+@font-face {
+    font-family: font-nav;
+    src: url(/font/Roboto-Regular.ttf);
+}
+@font-face {
+    font-family: font-main-light;
+    src: url(/font/Roboto-BlackItalic.ttf)
+}
+@font-face {
+    font-family: font-mobile-text;
+    src: url(/font/Roboto-Bold.ttf)
+}
+@font-face {
+    font-family: font-cart-text;
+    src: url(/font/Roboto-Bold.ttf)
+}

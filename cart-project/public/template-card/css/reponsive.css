@@ -1,0 +1,18 @@
+@media screen and (min-width: 768px) {
+    .btn-add {
+        width: 30px;
+    }
+    .btn-lower {
+        width: 30px;
+    }
+  }
+@media screen and (min-width: 576px) {
+    .btn-add {
+        margin-bottom: 5px;
+    }
+}
+@media screen and (max-width: 576px) {
+    .cart-sm {
+        display: none !important;
+    }
+}
