@@ -2,7 +2,6 @@ import React from "react";
 import { connect } from "react-redux";
 import CartList from "./../components/CartList";
 import Cart from "./../components/Cart";
-import * as actions from './../actions/index';
 class CartsContainer extends React.Component {
   render() {
     let { carts } = this.props;

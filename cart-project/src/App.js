@@ -1,11 +1,9 @@
 import React from "react";
 import Header from "./components/Header";
-import CartList from "./components/CartList";
 import Total from "./components/Total";
 import Footer from "./components/Footer";
 import ProductsContainer from "./containers/ProductsContainer";
 import CartsContainer from "./containers/CartsContainer";
-import Cart from "./components/Cart";
 import { connect } from "react-redux";
 class App extends React.Component {
   render() {

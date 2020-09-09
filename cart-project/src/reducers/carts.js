@@ -1,6 +1,7 @@
 import * as types from "../constants/ActionTypes";
-let data = JSON.parse(localStorage.getItem("carts"));
-let initialState = data ? data : [];
+let dataStorage = localStorage.getItem("carts");
+let data = typeof dataStorage === "string" ? [] : JSON.parse(dataStorage);
+let initialState = data? data : [];
 const checkMatchId = (state, object) => {
   let count = 0;
   if (state.length > 0) {
@@ -55,13 +56,13 @@ const carts = (state = initialState, action) => {
           return elm;
         }
       });
-      localStorage.setItem('carts', JSON.stringify(resultSub));
+      localStorage.setItem("carts", JSON.stringify(resultSub));
       return resultSub;
     case types.DELETE_CART:
       let resultDelete = state.filter((elm) => {
         return elm.property.id !== action.data;
-      })
-      localStorage.setItem('carts', resultDelete);
+      });
+      localStorage.setItem("carts", resultDelete);
       return resultDelete;
     default:
       return [...state];

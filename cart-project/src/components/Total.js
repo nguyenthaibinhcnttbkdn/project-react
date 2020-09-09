@@ -4,12 +4,10 @@ class Total extends React.Component {
 
   render() {
     let {carts} = this.props;
-    console.log(carts);
     let totalAmount = 0;
     carts.forEach((elm) => {
       totalAmount += elm.quantity*elm.property.price;
     })
-    console.log(totalAmount);
     return (
       <div>
         <section className="total">

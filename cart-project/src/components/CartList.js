@@ -1,11 +1,10 @@
 import React from "react";
-import Cart from "./Cart";
 import { connect } from "react-redux";
+
 class CartList extends React.Component {
   render() {
     let { children } = this.props;
     let { carts } = this.props;
-    console.log(carts);
     return (
       <div>
         <section className="cart">
