@@ -6,8 +6,10 @@ import Footer from "./components/Footer";
 import ProductsContainer from "./containers/ProductsContainer";
 import CartsContainer from "./containers/CartsContainer";
 import Cart from "./components/Cart";
+import { connect } from "react-redux";
 class App extends React.Component {
   render() {
+    let { carts } = this.props;
     return (
       <div>
         <Header />
@@ -17,7 +19,7 @@ class App extends React.Component {
           </section>
           <ProductsContainer />
           <CartsContainer />
-          <Total />
+          {carts.length > 0 ? <Total /> : ""}
           {/* Total */}
         </main>
         <Footer />
@@ -25,4 +27,9 @@ class App extends React.Component {
     );
   }
 }
-export default App;
+const mapStateToProps = (state) => {
+  return {
+    carts: state.carts,
+  };
+};
+export default connect(mapStateToProps, null)(App);

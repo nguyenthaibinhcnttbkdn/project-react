@@ -39,15 +39,30 @@ const carts = (state = initialState, action) => {
       return [...state, object];
     case types.PLUS_ONE:
       let resultAdd = state.map((elm) => {
-        if(elm.property.id === action.data) {
-          return {...elm, quantity: elm.quantity + 1};
+        if (elm.property.id === action.data) {
+          return { ...elm, quantity: elm.quantity + 1 };
         } else {
           return elm;
         }
-      })
-      localStorage.setItem('carts', JSON.stringify(resultAdd));
+      });
+      localStorage.setItem("carts", JSON.stringify(resultAdd));
       return resultAdd;
-      
+    case types.SUB_ONE:
+      let resultSub = state.map((elm) => {
+        if (elm.property.id === action.data) {
+          return { ...elm, quantity: elm.quantity <= 1 ? 1 : elm.quantity - 1 };
+        } else {
+          return elm;
+        }
+      });
+      localStorage.setItem('carts', JSON.stringify(resultSub));
+      return resultSub;
+    case types.DELETE_CART:
+      let resultDelete = state.filter((elm) => {
+        return elm.property.id !== action.data;
+      })
+      localStorage.setItem('carts', resultDelete);
+      return resultDelete;
     default:
       return [...state];
   }

@@ -14,9 +14,16 @@ export const actPlusOne = (id) => {
     }
 }
 
-export const actSubOne = () => {
+export const actSubOne = (id) => {
     return {
         type: types.SUB_ONE,
+        data: id
+    }
+}
+
+export const actDeleteCart = (id) => {
+    return {
+        type: types.DELETE_CART,
         data: id
     }
 }

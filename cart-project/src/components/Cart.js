@@ -8,6 +8,9 @@ class Cart extends React.Component {
   onSubOne = () => {
     this.props.actSubOne(this.props.cart.property.id);
   }
+  onDeleteCart = () => {
+    this.props.actDeleteCart(this.props.cart.property.id);
+  }
   render() {
     let { cart } = this.props;
     return (
@@ -40,7 +43,10 @@ class Cart extends React.Component {
           </div>
           <div className="col-lg-2 col-md-2 col-sm-2 col-2">{cart.property.price * cart.quantity} VND</div>
           <div className="col-lg-2 col-md-2 col-sm-2 col-2">
-            <button className="btn btn-danger align-btn">Hủy</button>
+            <button 
+            onClick={this.onDeleteCart}
+            className="btn btn-danger align-btn"
+            >Hủy</button>
           </div>
         </div>
         <hr />
@@ -55,6 +61,9 @@ const mapDispatchToProps = (dispatch, props) => {
     },
     actSubOne: (id) => {
       dispatch(actions.actSubOne(id))
+    },
+    actDeleteCart: (id) => {
+      dispatch(actions.actDeleteCart(id))
     }
   }
 }
