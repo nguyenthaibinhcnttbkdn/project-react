@@ -14,7 +14,7 @@ class CartList extends React.Component {
               </div>
               <div className="col-lg-2 col-md-2 col-sm-2 col-3 text-cart">
                 Giá
-              </div>
+              </div>  
               <div className="col-lg-2 col-md-2 col-sm-2 col-2 text-cart">
                 Số Lượng
               </div>

@@ -1,6 +1,6 @@
 import * as types from "../constants/ActionTypes";
-
-let initialState = [];
+let data = JSON.parse(localStorage.getItem("carts"));
+let initialState = data ? data : [];
 const checkMatchId = (state, object) => {
   let count = 0;
   if (state.length > 0) {
@@ -20,21 +20,34 @@ const carts = (state = initialState, action) => {
         quantity: action.quantity,
       };
       if (state.length > 0) {
-        if(checkMatchId(state, object)) {
-          let a = 1;
+        if (checkMatchId(state, object)) {
           let result = state.map((elm) => {
-            if(elm.property.id === object.property.id) {
-              return {...elm, quantity: elm.quantity + 1}
+            if (elm.property.id === object.property.id) {
+              return { ...elm, quantity: elm.quantity + 1 };
             } else {
               return elm;
             }
-          })
+          });
+          localStorage.setItem("carts", JSON.stringify(result));
           return result;
         } else {
-          return [...state,object];
+          localStorage.setItem("carts", JSON.stringify([...state, object]));
+          return [...state, object];
         }
       }
+      localStorage.setItem("carts", JSON.stringify([...state, object]));
       return [...state, object];
+    case types.PLUS_ONE:
+      let resultAdd = state.map((elm) => {
+        if(elm.property.id === action.data) {
+          return {...elm, quantity: elm.quantity + 1};
+        } else {
+          return elm;
+        }
+      })
+      localStorage.setItem('carts', JSON.stringify(resultAdd));
+      return resultAdd;
+      
     default:
       return [...state];
   }

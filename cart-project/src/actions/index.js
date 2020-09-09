@@ -7,3 +7,16 @@ export const actAddToCart = (product, quantity) => {
         quantity: quantity
     }
 }
+export const actPlusOne = (id) => {
+    return {
+        type: types.PLUS_ONE,
+        data: id
+    }
+}
+
+export const actSubOne = () => {
+    return {
+        type: types.SUB_ONE,
+        data: id
+    }
+}

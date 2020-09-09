@@ -19,7 +19,7 @@ class Product extends React.Component {
           <p className="name-mobile">{product.name}</p>
           <hr className="divide mt-4" />
           <p className="cost ml-3">
-            Giá: <span>{product.price}</span>
+            Giá: <span>{product.price}</span> VND
           </p>
           <button 
           type="button" 
