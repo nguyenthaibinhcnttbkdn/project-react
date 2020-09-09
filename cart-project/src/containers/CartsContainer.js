@@ -23,11 +23,5 @@ const mapStateToProps = (state) => {
     carts: state.carts,
   };
 };
-const mapDispatchToProps = (dispatch, props) => {
-  return {
-    actAddToCart: (product, quantity) => {
-        dispatch(actions.actAddToCart(product,quantity))
-    },
-  };
-};
-export default connect(mapStateToProps, mapDispatchToProps)(CartsContainer);
+
+export default connect(mapStateToProps, null)(CartsContainer);

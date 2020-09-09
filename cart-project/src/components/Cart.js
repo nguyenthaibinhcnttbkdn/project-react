@@ -3,14 +3,13 @@ import React from "react";
 class Cart extends React.Component {
   render() {
     let { cart } = this.props;
-    console.log(cart);
     return (
       <div>
         <hr />
         <div className="row">
           <div className="col-lg-2 col-md-2 col-sm-2 cart-sm">
             <img
-              src="/template-card/img/iphone-7-plus.jpg"
+              src={cart.property.image}
               className="img-cart"
             />
           </div>

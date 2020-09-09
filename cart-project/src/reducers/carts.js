@@ -1,39 +1,40 @@
-import * as types from '../constants/ActionTypes';
+import * as types from "../constants/ActionTypes";
 
-let initialState = [
-  {
-    property: {
-      id: 1,
-      name: "Iphone 7 Plus",
-      price: 5000000,
-      image: "/template-card/img/iphone-7-plus.jpg",
-    },
-    quantity: 1,
-  },
-  {
-    property: {
-      id: 1,
-      name: "Iphone 7 Plus",
-      price: 5000000,
-      image: "/template-card/img/iphone-7-plus.jpg",
-    },
-    quantity: 1,
-  },
-  {
-    property: {
-      id: 1,
-      name: "Iphone 7 Plus",
-      price: 5000000,
-      image: "/template-card/img/iphone-7-plus.jpg",
-    },
-    quantity: 1,
-  },
-];
-
+let initialState = [];
+const checkMatchId = (state, object) => {
+  let count = 0;
+  if (state.length > 0) {
+    state.forEach((elm) => {
+      if (elm.property.id === object.property.id) {
+        count++;
+      }
+    });
+  }
+  return count > 0 ? true : false;
+};
 const carts = (state = initialState, action) => {
   switch (action.type) {
     case types.ADD_TO_CART:
-        
+      let object = {
+        property: action.product,
+        quantity: action.quantity,
+      };
+      if (state.length > 0) {
+        if(checkMatchId(state, object)) {
+          let a = 1;
+          let result = state.map((elm) => {
+            if(elm.property.id === object.property.id) {
+              return {...elm, quantity: elm.quantity + 1}
+            } else {
+              return elm;
+            }
+          })
+          return result;
+        } else {
+          return [...state,object];
+        }
+      }
+      return [...state, object];
     default:
       return [...state];
   }

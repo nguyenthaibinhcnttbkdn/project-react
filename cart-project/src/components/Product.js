@@ -1,6 +1,12 @@
 import React from "react";
+import * as actions from './../actions/index';
+import {connect} from 'react-redux';
 
 class Product extends React.Component {
+  onAddToCart = () => {
+    let {product} = this.props;
+    this.props.actAddToCart(product, 1);
+  }
   render() {
     let { product } = this.props;
     return (
@@ -15,7 +21,11 @@ class Product extends React.Component {
           <p className="cost ml-3">
             Giá: <span>{product.price}</span>
           </p>
-          <button type="button" className="btn btn-primary btn-buy">
+          <button 
+          type="button" 
+          className="btn btn-primary btn-buy"
+          onClick={this.onAddToCart}
+          >
             Mua Hàng
           </button>
         </div>
@@ -24,4 +34,11 @@ class Product extends React.Component {
   }
 }
 
-export default Product;
+const mapDispatchToProps = (dispatch, props) => {
+  return {
+    actAddToCart: (product, quantity) => {
+      dispatch(actions.actAddToCart(product, quantity))
+    }
+  }
+}
+export default connect(null, mapDispatchToProps)(Product);
