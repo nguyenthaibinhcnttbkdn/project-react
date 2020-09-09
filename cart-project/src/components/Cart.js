@@ -2,6 +2,8 @@ import React from "react";
 
 class Cart extends React.Component {
   render() {
+    let { cart } = this.props;
+    console.log(cart);
     return (
       <div>
         <hr />
@@ -12,10 +14,14 @@ class Cart extends React.Component {
               className="img-cart"
             />
           </div>
-          <div className="col-lg-2 col-md-2 col-sm-2 col-3">Iphone 7 Plus</div>
-          <div className="col-lg-2 col-md-2 col-sm-2 col-3">7000000</div>
+          <div className="col-lg-2 col-md-2 col-sm-2 col-3">
+            {cart.property.name}
+          </div>
+          <div className="col-lg-2 col-md-2 col-sm-2 col-3">
+            {cart.property.price}
+          </div>
           <div className="col-lg-2 col-md-2 col-sm-2 col-2">
-            <p className="amount">1</p>
+            <p className="amount">{cart.quantity}</p>
             <button type="button" className="btn-add mr-2">
               +
             </button>

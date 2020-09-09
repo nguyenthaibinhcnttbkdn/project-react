@@ -2,6 +2,7 @@ import React from "react";
 import Cart from "./Cart";
 class CartList extends React.Component {
   render() {
+    let {children} = this.props;
     return (
       <div>
         <section className="cart">
@@ -21,10 +22,8 @@ class CartList extends React.Component {
                 Tổng cộng
               </div>
             </div>
-            <Cart />
-            <Cart />
-            <Cart />
           </div>
+          {children}
         </section>
       </div>
     );
